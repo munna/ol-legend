@@ -1,0 +1,67 @@
+.layer-legend.shown.ol-control {
+    background-color: transparent;
+}
+
+.layer-legend.shown.ol-control:hover {
+    background-color: transparent;
+}
+
+.layer-legend {
+    position: absolute;
+    top: 3.5em;
+    right: 0.5em;
+    text-align: left;
+}
+
+.layer-legend.shown {
+    bottom: 3em;
+}
+
+.layer-legend .panel {
+    padding: 0 1em 0 0;
+    margin: 0;
+    border: 4px solid #eee;
+    border-radius: 4px;
+    background-color: white;
+    display: none;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.layer-legend.shown .panel {
+    display: block;
+}
+
+.layer-legend button {
+    float: right;
+    width: 38px;
+    height: 38px;
+    background-image: url('data:image/png;base64,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') /*logo.png*/;
+    background-repeat: no-repeat;
+    background-position: 2px;
+    background-color: white;
+    border: none;
+}
+
+.layer-legend.shown button {
+    display: none;
+}
+
+.layer-legend button:focus, .layer-legend button:hover {
+    background-color: white;
+}
+
+
+.layer-legend.touch ::-webkit-scrollbar {
+    width: 4px;
+}
+
+.layer-legend.touch ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.layer-legend.touch ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
