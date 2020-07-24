@@ -16,7 +16,6 @@ export default class LayerLegend extends Control {
     constructor(opt_options) {
 
         var options = opt_options || {};
-
         var tipLabel = options.tipLabel ?
             options.tipLabel : 'Legend';
 
@@ -26,7 +25,7 @@ export default class LayerLegend extends Control {
 
         this.mapListeners = [];
 
-        this.hiddenClassName = 'ol-unselectable ol-control layer-switcher';
+        this.hiddenClassName = 'ol-unselectable ol-control layer-legend';
         if (LayerLegend.isTouchDevice_()) {
             this.hiddenClassName += ' touch';
         }
@@ -80,7 +79,7 @@ export default class LayerLegend extends Control {
             this.mapListeners.push(map.on('pointerdown', function() {
                 this_.hidePanel();
             }));
-            this.renderPanel();
+            this.renderPanel(this_);
         }
     }
 
@@ -106,8 +105,8 @@ export default class LayerLegend extends Control {
     /**
     * Re-draw the layer panel to represent the current state of the layers.
     */
-    renderPanel() {
-        LayerLegend.renderPanel(this.getMap(), this.panel);
+    renderPanel(obj) {
+        LayerLegend.renderPanel(this.getMap(),obj.legendUrl, this.panel);
     }
 
     /**
@@ -115,7 +114,7 @@ export default class LayerLegend extends Control {
     * @param {ol.Map} map The OpenLayers Map instance to render layers for
     * @param {Element} panel The DOM Element into which the layer tree will be rendered
     */
-    static renderPanel(map, panel) {
+    static renderPanel(map, url, panel) {
 
         while(panel.firstChild) {
             panel.removeChild(panel.firstChild);
@@ -123,8 +122,9 @@ export default class LayerLegend extends Control {
 
         var dv = document.createElement('div');
         panel.appendChild(dv);
+        console.log(this);
         // passing two map arguments instead of lyr as we're passing the map as the root of the layers tree
-        LayerLegend.renderLegend(map, this.legendUrl, dv);
+        LayerLegend.renderLegend(map, url, dv);
 
     }
     /**
@@ -135,7 +135,9 @@ export default class LayerLegend extends Control {
     * @param {Element} elm DOM element that children will be appended to.
     */
     static renderLegend(map,url, elm) {
-        elm.appendChild(`<img src=${url} />`);
+        var img = new Image();
+        img.src=url;
+        elm.appendChild(img);
     }
 
     /**
