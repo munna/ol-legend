@@ -1,6 +1,6 @@
 {
   "name": "ol-legend",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Legend control for OpenLayers v3/v4/v5",
   "main": "dist/ol-layerlist.js",
   "repository": {
@@ -13,7 +13,7 @@
   ],
   "keywords": [
     "openlayers",
-    "layerswitcher",
+    "Legend",
     "ol"
   ],
   "license": "MIT",

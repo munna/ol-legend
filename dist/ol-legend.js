@@ -20,7 +20,6 @@ class LayerLegend extends Control {
     constructor(opt_options) {
 
         var options = opt_options || {};
-        console.log(opt_options);
         var tipLabel = options.tipLabel ? options.tipLabel : 'Legend';
 
         var element = document.createElement('div');
